@@ -11,33 +11,47 @@ export class TooltipDirective {
   private id: string;
 
   @HostListener("document:click", ["$event"]) onclick(event) {
+    let self = this;
+    let myTooltip = this.tooltipService.tooltips.find(function(element) {
+      return element.id == self.id;
+    });
+    
     if (this.eRef.nativeElement.contains(event.target)) {
-      this.display();
-    } 
-    else {
-      let self = this;
-      let myTooltip = this.tooltipService.tooltips.find(function(element) {
-        return element.id == self.id;
-      });
       if (myTooltip) {
-        
+        this.hide();
       }
-      this.hide();
+      else {
+        this.display();
+      }
+    } 
+    else if (!(myTooltip && myTooltip.eRef.nativeElement.contains(event.target))) {
+      if (myTooltip) {
+        this.hide();
+      }
     }
   }
+
+  /*
+  @HostListener("focus", ['$event']) onfocus(event) {
+    console.log("focus", event);
+    this.display();
+  }
+  @HostListener("blur", ['$event']) onblur(event) {
+    console.log("blur", event);
+    this.hide();
+  }
+  */
+
   @HostListener("document:keydown", ['$event']) onkeypress(event) {
     if (event.keyCode === 27) {
       this.hide();
     }
   }
-  @HostListener("focus", ['$event']) onfocus(event) {
-    this.display();
-  }
-  @HostListener("blur", ['$event']) onblur(event) {
-    this.hide();
-  }
 
   display(): void {
+    if (this.enabled) {return;}
+    this.enabled = true;
+
     let obj = {
       id: this.id,
       ref: this.eRef,
@@ -47,9 +61,12 @@ export class TooltipDirective {
     this.tooltipService.tooltips.push(obj);
   }
   hide(): void {
+    if (!this.enabled) {return;}
+    this.enabled = false;
+
     let self = this;
-    let ind = this.tooltipService.tooltips.find(function(element) {
-      return element.id == self.id;
+    let ind = this.tooltipService.tooltips.findIndex(function(element) {
+      return element.id === self.id;
     });
     this.tooltipService.tooltips.splice(ind,1);
   }
