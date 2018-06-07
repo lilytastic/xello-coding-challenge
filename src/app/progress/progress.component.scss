@@ -3,13 +3,16 @@
 .progress-wrapper {
     display: flex;
     align-items: center;
+    margin-top: 1px;
     .progress {
         display: inline-flex;
         width: 200px;
+        height: 15px;
+        border-radius: 3px;
     }
     .label {
-        margin-left: 11px; 
-        font-size: 0.9em; 
+        margin-left: 10px; 
+        font-size: 0.8em; 
         padding-top: 2px;
         display: inline-block;
     }

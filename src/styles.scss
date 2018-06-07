@@ -31,11 +31,14 @@ h1, h2, h3 {
 
 .container {
     padding-top: 35px;
+    padding-left: 2px;
 }
 
 select.form-control:not([size]):not([multiple]) {
-    height: calc(2.2rem + 2px);
+    height: calc(2.2rem + 1px);
     padding-left: 8px;
+    border-radius: 6px;
+    border-color: #ccc;
     width: 300px;
     cursor: pointer;
     transition: ease-in-out .1s background-color;
@@ -107,7 +110,7 @@ select.form-control:not([size]):not([multiple]) {
             position: absolute;
             top: 50%;
             font-weight: 700;
-            margin-top:-6px;
+            margin-top: -7px;
             left: 3.5px;
             color: $green;
         }

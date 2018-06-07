@@ -11,9 +11,17 @@ export class TooltipDirective {
   private id: string;
 
   @HostListener("document:click", ["$event"]) onclick(event) {
-    if(this.eRef.nativeElement.contains(event.target)) {
+    if (this.eRef.nativeElement.contains(event.target)) {
       this.display();
-    } else {
+    } 
+    else {
+      let self = this;
+      let myTooltip = this.tooltipService.tooltips.find(function(element) {
+        return element.id == self.id;
+      });
+      if (myTooltip) {
+        
+      }
       this.hide();
     }
   }
@@ -30,18 +38,15 @@ export class TooltipDirective {
   }
 
   display(): void {
-    if (this.enabled) {return;}
-    this.enabled = true;
     let obj = {
       id: this.id,
       ref: this.eRef,
       content: this.content
     };
+    this.tooltipService.tooltips = [];
     this.tooltipService.tooltips.push(obj);
   }
   hide(): void {
-    if (!this.enabled) {return;}
-    this.enabled = false;
     let self = this;
     let ind = this.tooltipService.tooltips.find(function(element) {
       return element.id == self.id;

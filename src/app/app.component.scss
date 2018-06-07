@@ -4,6 +4,13 @@
     display: inline-block;
     white-space: nowrap;
     font-size: 1.45rem;
+    letter-spacing: -0.01em;
+}
+.page-title-row {
+    margin: 0 -10px;
+    .col {
+        padding: 0 10px;
+    }
 }
 .credit-indicator {
     display: inline-block;
@@ -33,15 +40,17 @@
 }
 
 .year-row {
-    margin: 0 -8px;
+    margin: 0 -14px;
     .col {
-        padding: 0 8px;
+        padding: 0 14px;
     }
 }
 
 .nav {
-    padding: 6px 16px;
+    padding: 5px 16px;
+    padding-bottom: 6px;
     margin: 16px 0;
+    margin-bottom: 21px;
     margin-left: -3px;
     border-radius: 6px;
     letter-spacing: 0.01em;
@@ -54,7 +63,7 @@
     }
     
     .col-form-label {
-        padding-top: calc(.5rem + 1px);
+        padding-top: calc(.5rem + 2px);
         padding-bottom: calc(.3rem + 1px);
     }
     .form-control, label {

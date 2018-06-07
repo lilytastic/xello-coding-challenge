@@ -1,6 +1,7 @@
 @import "../../variables.scss";
 
 $fade-duration: .1s;
+$slot-border-radius: 5px;
 
 :host {
     display: block;
@@ -48,7 +49,7 @@ $fade-duration: .1s;
 
     .header {
         padding-top: 14px;
-        padding-bottom: 6px;
+        padding-bottom: 4px;
         h3 {
             font-size: 1.05em;
             letter-spacing: -0.02em;
@@ -64,28 +65,29 @@ $fade-duration: .1s;
 
     .slot-list {
         padding: 9px 0;
+        padding-bottom: 15px;
         .slot {
             margin-bottom: 5px;
             -moz-user-select: -moz-none;
             -webkit-user-select: none;
             cursor: pointer;
-            border-radius: 5px;
+            border-radius: $slot-border-radius;
             overflow: hidden;
-            border-top-left-radius: 5px;
-            border-bottom-left-radius: 5px;
+            border-top-left-radius: $slot-border-radius;
+            border-bottom-left-radius: $slot-border-radius;
             display: flex;
             align-items: stretch;
             position: relative;
 
             .alert-bubble {
                 position: absolute;
-                top: 8px;
-                right: 12px;
+                top: 7px;
+                right: 9px;
                 background-color: $red;
                 border: solid 1px $darker-red;
                 border-radius: 50%;
-                width: 15px;
-                height: 15px;
+                width: 17px;
+                height: 17px;
 
                 &:before {
                     font-size: 11px;
@@ -95,7 +97,7 @@ $fade-duration: .1s;
                     font-weight: 400;
                     left: 50%;
                     top: 50%;
-                    margin-top: -8px;
+                    margin-top: -7px;
                     margin-left: -2px;
                 }
             }
@@ -103,11 +105,11 @@ $fade-duration: .1s;
             .margin {
                 box-sizing: content-box;
                 position: relative;
-                width: 10px;
+                width: 6px;
                 background-color: $green;
                 border: solid 1px rgba(0,0,0,0.02);
-                border-top-left-radius: 5px;
-                border-bottom-left-radius: 5px;
+                border-top-left-radius: $slot-border-radius;
+                border-bottom-left-radius: $slot-border-radius;
                 transition: ease-in-out .1s background-color, ease-in-out .1s padding;
             }
             .content {
@@ -118,10 +120,11 @@ $fade-duration: .1s;
                 background-color: white;
                 min-height: 48px;
                 padding: 6px 12px;
+                padding-right: 8px;
                 border: solid 1px #ccc;
                 border-left: none;
-                border-top-right-radius: 5px;
-                border-bottom-right-radius: 5px;
+                border-top-right-radius: $slot-border-radius;
+                border-bottom-right-radius: $slot-border-radius;
                 font-size: 0.85rem;
                 .name, .details {
                     width: 100%;
@@ -141,7 +144,7 @@ $fade-duration: .1s;
             &.recommendation {
                 .margin {
                     background-color: $blue;
-                    width: 50px;
+                    width: 45px;
                     &:before {
                         font: normal normal normal 20px/1 'FontAwesome';
                         content: "\f067";
@@ -171,8 +174,8 @@ $fade-duration: .1s;
                     border: dashed 1px #e1e1e1;
                     color: #aeaeae;
                     padding-left: 16px;
-                    border-top-left-radius: 5px;
-                    border-bottom-left-radius: 5px;
+                    border-top-left-radius: $slot-border-radius;
+                    border-bottom-left-radius: $slot-border-radius;
                 }
             }
             &:hover, &:active, &:focus {
@@ -215,7 +218,7 @@ $fade-duration: .1s;
 
     .footer {
         opacity: 0;
-        padding: 14px 0;
+        padding: 19px 0;
         pointer-events: none;
         background-color: transparent;
 
@@ -230,7 +233,7 @@ $fade-duration: .1s;
             color: white;
             border-radius: 4px;
             padding: 9px 16px;
-            font-size: 0.9em;
+            font-size: 0.95em;
             transition: ease-in-out .1s background-color, ease-in-out .1s box-shadow;
 
             &:hover, &:focus {
