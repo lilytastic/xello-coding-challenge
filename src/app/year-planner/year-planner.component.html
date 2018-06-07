@@ -13,10 +13,10 @@
     </div>
   </div>
   <div class="slot-list">
-    <div *ngFor="let slot of year.slots"
-          data-toggle="popover" data-trigger="click" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+    <div *ngFor="let slot of year.slots">
       <div *ngIf="slot.course">
-        <div class="slot selected" tabindex="0" xTooltip>
+        <div class="slot selected" tabindex="0" 
+             xTooltip [content]="'This course requires a Pre-Requisite<br><br><a>Add one.</a>'">
           <div *ngIf="slot.course.prerequisites" class="alert-bubble"></div>
           <div class="margin">
 

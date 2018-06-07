@@ -18,7 +18,6 @@ export class TooltipComponent implements AfterViewInit {
   }
 
   position(): void {
-    console.log(this.ref);
     let nativeElm = this.element.nativeElement;
     let nativeElmBounds = nativeElm.getBoundingClientRect();
 

@@ -8,14 +8,55 @@ $border-radius: 4px;
     box-shadow: 0 1px 4px rgba(0,0,0,0.16);
     border-radius: $border-radius;
     transition: opacity .15s ease-in-out;
-    
+
+    .caret {
+        position: absolute;
+        right: 10px;
+        bottom: -20px;
+        width: 0;
+        height: 0;
+        border: solid 10px transparent;
+        &:after {
+            content: '';
+            z-index: 2;
+            display: block;
+            position: absolute;
+            top: -11px;
+            left: -10px;
+            width: 0;
+            height: 0;
+            border: solid 10px transparent;
+            border-top-color: white;
+        }
+        &:before {
+            content: "";
+            z-index: 0;
+            position: absolute;
+            top: -24px;
+            left: -10px;
+            width: 20px;
+            height: 20px;
+            transform: rotate(45deg);
+            background-color: rgba(0, 0, 0, 0.16);
+            box-shadow: 0 0 4px rgba(0, 0, 0, 0.16);
+        }
+    }
+
     .content {
+        position: relative;
         border-radius: $border-radius;
         border: solid 1px #ddd;
         background-color: white;
-        padding: 9px;
-        padding-left: 17px;
+        padding: 11px;
+        padding-left: 18px;
         width: 100%;
+        font-size: 0.8em;
+        line-height: 1.2em;
+        z-index: 2;
+
+        a {
+            color: $dark-blue;
+        }
     }
 
     .margin {
@@ -24,6 +65,7 @@ $border-radius: 4px;
         left: 0;
         top: 0;
         bottom: 0;
+        z-index: 3;
         width: 9px;
         background-color: $red;
         border-top-left-radius: $border-radius;

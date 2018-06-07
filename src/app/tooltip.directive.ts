@@ -5,7 +5,7 @@ import { TooltipService } from "./tooltip.service";
   selector: '[xTooltip]'
 })
 export class TooltipDirective {
-  @Input('xTooltop') templateUrl: string;
+  @Input('content') content: string;
 
   enabled: Boolean;
   private id: string;
@@ -14,6 +14,11 @@ export class TooltipDirective {
     if(this.eRef.nativeElement.contains(event.target)) {
       this.display();
     } else {
+      this.hide();
+    }
+  }
+  @HostListener("document:keydown", ['$event']) onkeypress(event) {
+    if (event.keyCode === 27) {
       this.hide();
     }
   }
@@ -30,9 +35,8 @@ export class TooltipDirective {
     let obj = {
       id: this.id,
       ref: this.eRef,
-      content: ";)"
+      content: this.content
     };
-    console.log(obj);
     this.tooltipService.tooltips.push(obj);
   }
   hide(): void {
