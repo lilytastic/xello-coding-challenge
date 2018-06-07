@@ -1,0 +1,33 @@
+@import "../../variables.scss";
+
+$border-radius: 4px;
+
+:host {
+    position: absolute;
+    min-width: 150px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.16);
+    border-radius: $border-radius;
+    transition: opacity .15s ease-in-out;
+    
+    .content {
+        border-radius: $border-radius;
+        border: solid 1px #ddd;
+        background-color: white;
+        padding: 9px;
+        padding-left: 17px;
+        width: 100%;
+    }
+
+    .margin {
+        position: absolute;
+        float: left;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 9px;
+        background-color: $red;
+        border-top-left-radius: $border-radius;
+        border-bottom-left-radius: $border-radius;
+        border: solid 1px rgba(0,0,0,0.02);
+    }
+}

@@ -1,0 +1,20 @@
+@import "../../variables.scss";
+
+.progress-wrapper {
+    display: flex;
+    align-items: center;
+    .progress {
+        display: inline-flex;
+        width: 200px;
+    }
+    .label {
+        margin-left: 11px; 
+        font-size: 0.9em; 
+        padding-top: 2px;
+        display: inline-block;
+    }
+}
+.current-value {
+    color: $dark-green;
+    font-weight: bold;
+}

@@ -1,0 +1,124 @@
+@import "variables.scss";
+
+body {
+    background-color: #fafafa;
+    color: #484848;
+    /* I know it's supposed to be Proxima Nova but I don't have access to that. */
+    font-family: "Metropolis", "Montserrat", sans-serif;
+    font-weight: 300;
+}
+h1, h2, h3 {
+    font-weight: bold;
+    margin: 0;
+    font-family: "Metropolis", "Montserrat", sans-serif;
+}
+
+@font-face {
+    font-family: "Metropolis";
+    font-weight: 500;
+    src: url(./assets/fonts/Metropolis-SemiBold.otf);
+}
+@font-face {
+    font-family: "Metropolis";
+    font-weight: bold;
+    src: url(./assets/fonts/Metropolis-Bold.otf);
+}
+@font-face {
+    font-family: "Metropolis";
+    font-weight: normal;
+    src: url(./assets/fonts/Metropolis-Regular.otf);
+}
+
+.container {
+    padding-top: 35px;
+}
+
+select.form-control:not([size]):not([multiple]) {
+    height: calc(2.2rem + 2px);
+    padding-left: 8px;
+    width: 300px;
+    cursor: pointer;
+    transition: ease-in-out .1s background-color;
+    &:hover {
+        background-color: #eaeaea;
+    }
+}
+
+.form-check {
+    margin-top: 6px;
+    margin-right: .7rem;
+}
+.form-check-inline {
+    align-items: normal;
+    cursor: pointer;
+    .form-check-input {
+        margin: 0;
+    }
+}
+.form-check-label {
+    padding-left: .7rem;
+    margin-right: 20px;
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+
+.select-with-icon {
+    display: block;
+    position: relative;
+
+    select {
+        appearance: none;
+        -webkit-appearance: none;    
+        -moz-appearance: none;
+        color: #737373;
+        padding: 9px 8px;
+        font-size: 0.8rem;
+    }
+
+    .fa {
+        position: absolute;
+        right: 12px;
+        pointer-events: none;
+        font-size: 1.2rem;
+        color: #999999;
+        top: 50%;
+        margin-top: -10px;
+    }
+}
+
+[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    height: 18px;
+    width: 18px;
+    cursor: pointer;
+    background-color: white;
+    border-radius: 3px;
+    border: solid 1px #ccc;
+
+    &:hover {
+        background-color: #eee
+    }
+    &:checked {
+        &:before {
+            font: normal normal normal 12px/1 'FontAwesome';
+            content: "\f00c";
+            position: absolute;
+            top: 50%;
+            font-weight: 700;
+            margin-top:-6px;
+            left: 3.5px;
+            color: $green;
+        }
+    }
+}
+
+.progress {
+    background-color: white;
+    border: solid 1px #e1e1e1;
+    height: 16px;
+}
+.progress-bar {
+    background-color: $green;
+}

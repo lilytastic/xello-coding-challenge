@@ -1,0 +1,86 @@
+<div class="year-planner">
+  <div class="header">
+    <h3>
+      <span class="name">
+        {{year.name}}
+      </span>
+      <span *ngIf="year.upcoming">
+        (next year)
+      </span>
+    </h3>
+    <div class="credits">
+        {{year.creditsPlanned}} credit{{creditsPlanned==1?"":"s"}} planned
+    </div>
+  </div>
+  <div class="slot-list">
+    <div *ngFor="let slot of year.slots"
+          data-toggle="popover" data-trigger="click" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+      <div *ngIf="slot.course">
+        <div class="slot selected" tabindex="0" xTooltip>
+          <div *ngIf="slot.course.prerequisites" class="alert-bubble"></div>
+          <div class="margin">
+
+          </div>
+          <div class="content">
+            <div class="name">
+              {{slot.course.name}}
+            </div>
+            <div class="row details no-gutters">
+              <div class="col">
+                <span class="course-code">
+                  {{slot.course.courseCode}}
+                </span>
+                |
+                {{slot.course.subject}}
+                {{slot.course.year}}
+              </div>
+              <div class="col-sm-auto ml-auto">
+                {{slot.course.credits}} cr.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="slot.recommendation">
+        <div class="slot recommendation" tabindex="0">
+          <div class="margin">
+
+          </div>
+          <div class="content" *ngIf="!slot.recommendation.course">
+              <div class="name">
+                Add {{slot.recommendation.type|capitalize}}
+              </div>
+              <div class="details">
+                {{yearlyPlan.creditsNeeded-year.creditsPlanned}} credits remaining
+              </div>
+          </div>
+          <div class="content" *ngIf="slot.recommendation.course">
+            <div class="name">
+              Add {{slot.recommendation.course.name}}
+            </div>
+            <div class="details">
+              {{slot.recommendation.course.credits}} cr.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="!slot.recommendation && !slot.course">
+        <div class="slot available" tabindex="0">
+          <div class="margin">
+
+          </div>
+          <div class="content">
+            <div class="name">
+              Available Slot
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <button type="button">
+      Ready To Submit
+    </button>
+  </div>
+</div>

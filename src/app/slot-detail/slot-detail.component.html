@@ -1,0 +1,60 @@
+<div *ngIf="slot.course">
+  <div class="slot selected">
+    <div class="margin">
+
+    </div>
+    <div class="content">
+      <div class="name">
+        {{slot.course.name}}
+      </div>
+      <div class="row details no-gutters">
+        <div class="col">
+          <span class="course-code">
+            {{slot.course.courseCode}}
+          </span>
+          |
+          {{slot.course.subject}}
+          {{slot.course.year}}
+        </div>
+        <div class="col-sm-auto ml-auto">
+          {{slot.course.credits}} cr.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="slot.recommendation">
+  <div class="slot recommendation">
+    <div class="margin">
+
+    </div>
+    <div class="content" *ngIf="!slot.recommendation.course">
+        <div class="name">
+          Add {{slot.recommendation.type|capitalize}}
+        </div>
+        <div class="details">
+          {{yearlyPlan.creditsNeeded-year.creditsPlanned}} credits remaining
+        </div>
+    </div>
+    <div class="content" *ngIf="slot.recommendation.course">
+      <div class="name">
+        Add {{slot.recommendation.course.name}}
+      </div>
+      <div class="details">
+        {{slot.recommendation.course.credits}} cr.
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="!slot.recommendation && !slot.course">
+  <div class="slot available">
+    <div class="margin">
+
+    </div>
+    <div class="content">
+      <div class="name">
+        Available Slot
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,20 @@
+.select-with-icon {
+    display: block;
+    position: relative;
+
+    select {
+        -webkit-appearance: none;
+        color: #737373;
+        padding: 9px 8px;
+        font-size: 0.8rem;
+    }
+
+    .fa {
+        position: absolute;
+        right: 12px;
+        font-size: 1.2rem;
+        color: #999999;
+        top: 50%;
+        margin-top: -10px;
+    }
+}
