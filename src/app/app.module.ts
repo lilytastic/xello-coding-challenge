@@ -10,6 +10,8 @@ import { SlotDetailComponent } from './slot-detail/slot-detail.component';
 import { TooltipDirective } from './tooltip.directive';
 import { TooltipComponent } from './tooltip/tooltip.component';
 import { TooltipContainerComponent } from './tooltip-container/tooltip-container.component';
+import { AppRoutingModule } from './/app-routing.module';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -21,10 +23,12 @@ import { TooltipContainerComponent } from './tooltip-container/tooltip-container
     SlotDetailComponent,
     TooltipDirective,
     TooltipComponent,
-    TooltipContainerComponent
+    TooltipContainerComponent,
+    DashboardComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -12,7 +12,15 @@ export class Year {
         this.creditsPlanned = 0;
         this.slots.forEach(function(slot) {
             if (slot.course) {
-                self.creditsPlanned += slot.course.credits;
+                if (slot.course.prerequisites) {
+                    // This is where I would check if the user has this prerequisite,
+                    // except that would probably be handled by the backend anyway,
+                    // and this isn't even part of the challenge,
+                    // I just wanted to read from real data for some reason.
+                }
+                else {
+                    self.creditsPlanned += slot.course.credits;
+                }
             }
         });
     }

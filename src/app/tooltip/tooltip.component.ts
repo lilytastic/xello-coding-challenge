@@ -29,7 +29,9 @@ export class TooltipComponent implements AfterViewInit {
 
     let bounds = this.ref.nativeElement.getBoundingClientRect();
     
-    let top = bounds.top-nativeElmBounds.height-10;
+    let offset = [0, 6];
+
+    let top = bounds.top-nativeElmBounds.height-offset[1];
     let left = bounds.left;
 
     let caretSize = 10;
@@ -37,11 +39,11 @@ export class TooltipComponent implements AfterViewInit {
     if (this.orientation === "top") {
       if (top < 0) {
         this.orientation = "bottom";
-        top = bounds.top+bounds.height+caretSize;
-        if (top < caretSize) {top = caretSize;}
+        top = bounds.top+bounds.height+offset[1];
+        if (top < offset[1]) {top = offset[1];}
       }
-      else if (top+nativeElmBounds.height+caretSize > window.innerHeight) {
-        top = window.innerHeight-nativeElmBounds.height-caretSize;
+      else if (top+nativeElmBounds.height+offset[1] > window.innerHeight) {
+        top = window.innerHeight-nativeElmBounds.height-offset[1];
       }
     }
     // Do the same vice-versa

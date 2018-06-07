@@ -1,0 +1,87 @@
+@import "../../variables.scss";
+
+.page-title {
+    display: inline-block;
+    white-space: nowrap;
+    font-size: 1.45rem;
+    letter-spacing: -0.01em;
+}
+
+.credit-indicator {
+    display: inline-block;
+    color: #737373;
+    font-size: 0.8em;
+    font-weight: normal;
+    .credit-value {
+        width: 22px;
+        height: 22px;
+        line-height: 1.6rem;
+        background-color: $dark-red;
+        border-radius: 11px;
+        text-align: center;
+        color: white;
+        display: inline-block;
+    }
+}
+
+.form-check-label {
+    text-transform: none;
+}
+
+@media (min-width: 1360px) {
+    .container {
+        max-width: 1300px;    
+    }
+}
+
+.form-group {
+    margin: 0 -10px;
+    .col {
+        padding: 0 10px;
+    }
+}
+.page-title-row {
+    margin: 0 -10px;
+    .col {
+        padding: 0 10px;
+    }
+}
+.year-row {
+    margin: 0 -14px;
+    .col {
+        padding: 0 14px;
+    }
+}
+
+.nav {
+    padding: 5px 4px;
+    padding-bottom: 6px;
+    margin: 16px 0;
+    margin-bottom: 21px;
+    margin-left: -3px;
+    border-radius: 6px;
+    letter-spacing: 0.01em;
+    color: #737373;
+    border: solid 1px #e1e1e1;
+    background-color: #f1f1f1;
+
+    .col {
+        border-left: solid 2px #e4e4e4;
+    }
+    
+    .col-form-label {
+        padding-top: calc(.5rem + 2px);
+        padding-bottom: calc(.3rem + 1px);
+    }
+    .form-control, label {
+        padding-top: 1px;
+        font-size: 0.8em;
+    }
+    .form-control {
+        padding-top: calc(.5rem + 1px)
+    }
+
+    .form-group {
+        margin-bottom: 0;
+    }
+}
