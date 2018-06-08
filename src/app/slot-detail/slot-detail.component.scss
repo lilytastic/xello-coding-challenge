@@ -1,0 +1,156 @@
+@import "../../variables.scss";
+
+$slot-border-radius: 5px;
+
+.slot {
+    margin-bottom: 5px;
+    -moz-user-select: -moz-none;
+    -webkit-user-select: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: $slot-border-radius;
+    overflow: hidden;
+    border-top-left-radius: $slot-border-radius;
+    border-bottom-left-radius: $slot-border-radius;
+    display: flex;
+    align-items: stretch;
+    position: relative;
+
+    .alert-bubble {
+        position: absolute;
+        top: 7px;
+        right: 9px;
+        background-color: $red;
+        border: solid 1px $darker-red;
+        border-radius: 50%;
+        width: 17px;
+        height: 17px;
+
+        &:before {
+            font-size: 11px;
+            position: absolute;
+            color: white;
+            content: "!";
+            font-weight: 400;
+            left: 50%;
+            top: 50%;
+            margin-top: -7px;
+            margin-left: -2px;
+        }
+    }
+    
+    .margin {
+        box-sizing: content-box;
+        position: relative;
+        width: 6px;
+        background-color: $green;
+        border: solid 1px rgba(0,0,0,0.02);
+        border-top-left-radius: $slot-border-radius;
+        border-bottom-left-radius: $slot-border-radius;
+        transition: ease-in-out .1s background-color, ease-in-out .1s padding;
+    }
+    .content {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        width: 100%;
+        background-color: white;
+        min-height: 48px;
+        padding: 6px 12px;
+        padding-right: 8px;
+        border: solid 1px #ccc;
+        border-left: none;
+        border-top-right-radius: $slot-border-radius;
+        border-bottom-right-radius: $slot-border-radius;
+        font-size: 0.85rem;
+        .name, .details {
+            width: 100%;
+        }
+        .details {
+            font-size: 0.65rem;
+            color: #aeaeae;
+            line-height: 1.3em;
+            letter-spacing: 0.03em;
+            .course-code {
+                color: #484848;
+            }
+        }
+        
+        transition: ease-in-out .1s background-color;
+    }
+    &.recommendation {
+        .margin {
+            background-color: $blue;
+            width: 45px;
+            &:before {
+                font: normal normal normal 20px/1 'FontAwesome';
+                content: "\f067";
+                position: absolute;
+                top: 50%;
+                right: 12px;
+                font-weight: 700;
+                margin-top: -9px;
+                color: white;
+            }
+        }
+        .content {
+            padding-left: 10px;
+            .name {
+                color: $dark-blue;
+            }
+            .details {
+                color: #484848;
+            }
+        }
+    }
+    &.available {
+        .margin {
+            display: none;
+        }
+        .content {
+            border: dashed 1px #e1e1e1;
+            color: #aeaeae;
+            padding-left: 16px;
+            border-top-left-radius: $slot-border-radius;
+            border-bottom-left-radius: $slot-border-radius;
+        }
+    }
+    &:focus {
+        box-shadow: 0 0 1.5px 0.5px #8dafe3;
+        background-color: #8dafe3;
+    }
+    &:hover, &:active {
+        .margin {
+            background-color: $dark-green;
+            padding-left: 10px;
+            &:before {
+                color: #eaeaea;
+            }
+        }
+        .content {
+            background-color: #eaeaea;
+        }
+        &.available {
+            .content {
+                border-color: #ccc;
+                color: #797979;
+            }
+        }
+        &.recommendation {
+            .margin {
+                background-color: $dark-blue;
+            }
+        }
+    }
+    &:active {
+        .margin {
+            padding-left: 15px;
+            &:before {
+                color: #e1e1e1;
+            }
+        }
+        .content {
+            background-color: #e1e1e1;
+        }
+    }
+}

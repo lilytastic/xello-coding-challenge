@@ -17,7 +17,6 @@ export class YearPlannerComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.year);
     let self = this;
   }
 

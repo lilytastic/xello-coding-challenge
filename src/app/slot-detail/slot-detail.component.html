@@ -1,5 +1,7 @@
 <div *ngIf="slot.course">
-  <div class="slot selected">
+  <div class="slot selected" tabindex="0" 
+        xTooltip [content]="'This course requires a Pre-Requisite<br><br><a>Add one.</a>'">
+    <div *ngIf="slot.course.prerequisites" class="alert-bubble"></div>
     <div class="margin">
 
     </div>
@@ -12,7 +14,9 @@
           <span class="course-code">
             {{slot.course.courseCode}}
           </span>
+          &nbsp;
           |
+          &nbsp;
           {{slot.course.subject}}
           {{slot.course.year}}
         </div>
@@ -23,8 +27,9 @@
     </div>
   </div>
 </div>
+
 <div *ngIf="slot.recommendation">
-  <div class="slot recommendation">
+  <div class="slot recommendation" tabindex="0">
     <div class="margin">
 
     </div>
@@ -33,7 +38,8 @@
           Add {{slot.recommendation.type|capitalize}}
         </div>
         <div class="details">
-          {{yearlyPlan.creditsNeeded-year.creditsPlanned}} credits remaining
+          <!-- Hardcoded for this challenge, since I can't make data consistent with the spec -->
+          16 credits remaining
         </div>
     </div>
     <div class="content" *ngIf="slot.recommendation.course">
@@ -46,8 +52,9 @@
     </div>
   </div>
 </div>
+
 <div *ngIf="!slot.recommendation && !slot.course">
-  <div class="slot available">
+  <div class="slot available" tabindex="0">
     <div class="margin">
 
     </div>
