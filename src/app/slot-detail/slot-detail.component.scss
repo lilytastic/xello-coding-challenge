@@ -96,13 +96,14 @@ $slot-border-radius: 5px;
             background-color: $blue;
             width: 45px;
             &:before {
-                font: normal normal normal 20px/1 'FontAwesome';
-                content: "\f067";
+                content: "+";
+                font-size: 38px;
                 position: absolute;
                 top: 50%;
-                right: 12px;
-                font-weight: 700;
-                margin-top: -9px;
+                left: 50%;
+                font-weight: 200;
+                margin-left: -11px;
+                margin-top: -25px;
                 color: white;
             }
         }

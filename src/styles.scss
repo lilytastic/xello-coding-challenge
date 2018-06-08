@@ -5,7 +5,7 @@ body {
     color: #484848;
     /* I know it's supposed to be Proxima Nova but I don't have access to that. */
     font-family: "Metropolis", "Montserrat", sans-serif;
-    font-weight: 300;
+    font-weight: 400;
 }
 h1, h2, h3 {
     font-weight: bold;
@@ -15,18 +15,23 @@ h1, h2, h3 {
 
 @font-face {
     font-family: "Metropolis";
+    font-weight: 200;
+    src: url(./assets/fonts/Metropolis-ExtraLight.otf);
+}
+@font-face {
+    font-family: "Metropolis";
+    font-weight: 400;
+    src: url(./assets/fonts/Metropolis-Regular.otf);
+}
+@font-face {
+    font-family: "Metropolis";
     font-weight: 500;
     src: url(./assets/fonts/Metropolis-SemiBold.otf);
 }
 @font-face {
     font-family: "Metropolis";
-    font-weight: bold;
+    font-weight: 700;
     src: url(./assets/fonts/Metropolis-Bold.otf);
-}
-@font-face {
-    font-family: "Metropolis";
-    font-weight: normal;
-    src: url(./assets/fonts/Metropolis-Regular.otf);
 }
 
 .container {
@@ -126,6 +131,11 @@ select.form-control:not([size]):not([multiple]) {
     background-color: $green;
 }
 
+@media (min-width: 1360px) {
+    .container {
+        max-width: 1300px;
+    }
+}
 @media (min-width: 576px) {
     select.form-control:not([size]):not([multiple]) {
         min-width: 300px;
