@@ -66,10 +66,12 @@ $slot-border-radius: 5px;
     .slot-list {
         padding: 9px 0;
         padding-bottom: 15px;
+        
         .slot {
             margin-bottom: 5px;
             -moz-user-select: -moz-none;
             -webkit-user-select: none;
+            outline: none;
             cursor: pointer;
             border-radius: $slot-border-radius;
             overflow: hidden;
@@ -178,8 +180,11 @@ $slot-border-radius: 5px;
                     border-bottom-left-radius: $slot-border-radius;
                 }
             }
-            &:hover, &:active, &:focus {
-                outline: none;
+            &:focus {
+                box-shadow: 0 0 1.5px 0.5px #8dafe3;
+                background-color: #8dafe3;
+            }
+            &:hover, &:active {
                 .margin {
                     background-color: $dark-green;
                     padding-left: 10px;

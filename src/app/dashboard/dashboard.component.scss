@@ -1,5 +1,7 @@
 @import "../../variables.scss";
 
+
+
 .page-title {
     display: inline-block;
     white-space: nowrap;
@@ -26,12 +28,6 @@
 
 .form-check-label {
     text-transform: none;
-}
-
-@media (min-width: 1360px) {
-    .container {
-        max-width: 1300px;    
-    }
 }
 
 .form-group {
@@ -64,10 +60,6 @@
     color: #737373;
     border: solid 1px #e1e1e1;
     background-color: #f1f1f1;
-
-    .col {
-        border-left: solid 2px #e4e4e4;
-    }
     
     .col-form-label {
         padding-top: calc(.5rem + 2px);
@@ -83,5 +75,30 @@
 
     .form-group {
         margin-bottom: 0;
+    }
+}
+
+@media (max-width: 768px)  { 
+    .nav {
+        margin: 20px 0;
+        > .col, > .col-sm-auto {
+            padding: 0;
+        }
+    }
+    .year-row {
+        white-space: nowrap;
+    }
+}
+@media (min-width: 768px) {
+    .nav {
+        .col {
+            border-left: solid 2px #e4e4e4;
+        } 
+    }
+}
+
+@media (min-width: 1360px) {
+    .container {
+        max-width: 1300px;    
     }
 }

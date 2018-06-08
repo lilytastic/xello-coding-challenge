@@ -8,6 +8,7 @@ export class TooltipDirective {
   @Input('content') content: string;
 
   enabled: Boolean;
+  focused: Boolean;
   private id: string;
 
   @HostListener("document:click", ["$event"]) onclick(event) {
@@ -31,18 +32,18 @@ export class TooltipDirective {
     }
   }
 
-  /*
   @HostListener("focus", ['$event']) onfocus(event) {
-    console.log("focus", event);
-    this.display();
+    this.focused = true;
+    //this.display();
   }
   @HostListener("blur", ['$event']) onblur(event) {
-    console.log("blur", event);
-    this.hide();
+    this.focused = false;
+    //this.hide();
   }
-  */
 
   @HostListener("document:keydown", ['$event']) onkeypress(event) {
+    if (event.keyCode === 13 || event.keyCode === 32) {
+    }
     if (event.keyCode === 27) {
       this.hide();
     }
@@ -73,6 +74,7 @@ export class TooltipDirective {
 
   constructor(private tooltipService: TooltipService, private eRef: ElementRef) { 
     this.enabled = false;
+    this.focused = false;
     this.id = Math.random()*9999+"";
   }
 

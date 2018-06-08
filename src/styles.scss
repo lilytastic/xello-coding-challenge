@@ -31,7 +31,7 @@ h1, h2, h3 {
 
 .container {
     padding-top: 35px;
-    padding-left: 2px;
+    padding-bottom: 50px;
 }
 
 select.form-control:not([size]):not([multiple]) {
@@ -39,11 +39,15 @@ select.form-control:not([size]):not([multiple]) {
     padding-left: 8px;
     border-radius: 6px;
     border-color: #ccc;
-    width: 300px;
     cursor: pointer;
     transition: ease-in-out .1s background-color;
     &:hover {
         background-color: #eaeaea;
+    }
+}
+@media (min-width: 768px) {
+    select.form-control:not([size]):not([multiple]) {
+        min-width: 300px;
     }
 }
 
@@ -76,6 +80,7 @@ select.form-control:not([size]):not([multiple]) {
         color: #737373;
         padding: 9px 8px;
         font-size: 0.8rem;
+        max-width: 100%;
     }
 
     .fa {
