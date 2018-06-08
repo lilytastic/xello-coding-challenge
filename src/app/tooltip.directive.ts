@@ -6,74 +6,77 @@ import { TooltipService } from "./tooltip.service";
 })
 export class TooltipDirective {
   @Input('content') content: string;
+  @Input('tooltipBind') tooltipBind: string;
 
   enabled: Boolean;
   focused: Boolean;
   private id: string;
 
-  @HostListener("document:click", ["$event"]) onclick(event) {
+  constructor(private tooltipService: TooltipService, private eRef: ElementRef) { 
+    this.enabled = false;
+    this.focused = false;
+    this.id = Math.random()*9999+"";
+  }
+
+  private GetTooltip(): any {
     let self = this;
     let myTooltip = this.tooltipService.tooltips.find(function(element) {
       return element.id == self.id;
     });
+    return myTooltip;
+  }
+
+  @HostListener("document:click", ["$event"]) onclick(event) {
+    let myTooltip = this.GetTooltip();
     
     if (this.eRef.nativeElement.contains(event.target)) {
-      if (myTooltip) {
-        this.enabled = true;
-        this.hide();
-      }
-      else {
-        this.enabled = false;
-        this.display();
-      }
+      myTooltip ? this.hide(true) : this.display(true);
     } 
     else if (!(myTooltip && myTooltip.eRef.nativeElement.contains(event.target))) {
-      if (myTooltip) {
-        this.enabled = true;
-        this.hide();
-      }
+      myTooltip ? this.hide(true) : null;
     }
   }
 
   @HostListener("focus", ['$event']) onfocus(event) {
     this.focused = true;
-    //this.display();
   }
   @HostListener("blur", ['$event']) onblur(event) {
     this.focused = false;
-    //this.hide();
   }
 
   @HostListener("document:keydown", ['$event']) onkeypress(event) {
     if (event.keyCode === 13 || event.keyCode === 32) {
-      if (this.focused) {
-        if (this.enabled) {
-          this.hide();
-        }
-        else {
-          this.display();
-        }
-      }
+      this.focused && this.enabled ? this.hide() : this.display();
     }
     else if (event.keyCode === 27) {
       this.hide();
     }
   }
 
-  display(): void {
-    if (this.enabled) {return;}
+  display(force?: Boolean): void {
+    if (this.enabled && !force) {return;}
     this.enabled = true;
+
+    let bindElm = null;
+    if (this.tooltipBind) {
+      bindElm = this.eRef.nativeElement.querySelector(this.tooltipBind);
+      if (!bindElm) {
+        bindElm = this.eRef.nativeElement.parentElement.querySelector(this.tooltipBind);
+      }
+      console.log(bindElm);
+    }
 
     let obj = {
       id: this.id,
       ref: this.eRef,
+      bindRef: bindElm,
       content: this.content
     };
     this.tooltipService.tooltips = [];
     this.tooltipService.tooltips.push(obj);
   }
-  hide(): void {
-    if (!this.enabled) {return;}
+  hide(force?: Boolean): void {
+    if (!this.enabled && !force) {return;}
     this.enabled = false;
 
     let self = this;
@@ -81,12 +84,6 @@ export class TooltipDirective {
       return element.id === self.id;
     });
     this.tooltipService.tooltips.splice(ind,1);
-  }
-
-  constructor(private tooltipService: TooltipService, private eRef: ElementRef) { 
-    this.enabled = false;
-    this.focused = false;
-    this.id = Math.random()*9999+"";
   }
 
 }

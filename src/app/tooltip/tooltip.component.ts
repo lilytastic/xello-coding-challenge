@@ -11,15 +11,15 @@ export class TooltipComponent implements OnInit, AfterViewInit {
   content: string;
   ref: ElementRef;
   
-  defaultOrientation: string;
-  orientation: string;
+  private defaultOrientation: string;
+  private orientation: string;
 
   constructor(public element: ElementRef, private renderer: Renderer) { 
     this.defaultOrientation = "top";
   }
   
   ngOnInit(): void {
-    this.tooltip.eRef = this.element;             // Bind the element to the tooltip, so that the directive can handle it.
+    this.tooltip.eRef = this.element;                     // Bind the element to the tooltip, so that the directive can handle it.
     if (this.tooltip) {
       this.content = this.tooltip.content;
       this.ref = this.tooltip.ref;
@@ -29,23 +29,36 @@ export class TooltipComponent implements OnInit, AfterViewInit {
     // position based on `ref`
     setTimeout(this.position.bind(this));
   }
+  @HostListener("window:scroll") onWindowScroll(): void {
+    this.position();
+  }
+  @HostListener("window:resize") onWindowResize(): void {
+    this.position();
+  }
 
   position(): void {
-    this.orientation = this.defaultOrientation;   // Reset orientation to the default -- only change in certain circumstances.
-    let offset = [0, 6];
+    this.orientation = this.defaultOrientation;           // Reset orientation to the default -- only change in certain circumstances.
+    let offset = [0, 12];
     let caretSize = 10;
+    let caret = this.element.nativeElement.querySelector(".caret");
+    //console.log(caret);
 
     let nativeElm = this.element.nativeElement;
+    let otherElm = this.ref.nativeElement;
+    if (this.tooltip.bindRef) {otherElm = this.tooltip.bindRef;}
 
-    let bounds = this.ref.nativeElement.getBoundingClientRect();    
-    // Change width first, since it might affect height...
-    if (bounds.width > 150) {
-      this.renderer.setElementStyle(nativeElm, 'width', `${bounds.width}px`);
+    let hotspotBounds = this.ref.nativeElement.getBoundingClientRect();           // Used only for caret.
+    let bounds = otherElm.getBoundingClientRect();    
+
+    if (bounds.width > 150) {                     
+      this.renderer.setElementStyle(nativeElm, 'width', `${bounds.width}px`);     // Change width first, since it might affect height...
     }
 
     let nativeElmBounds = nativeElm.getBoundingClientRect();
     let top = bounds.top;
     let left = bounds.left;
+    let caretOffset = hotspotBounds.left - bounds.left;
+    //let left = bounds.right-nativeElmBounds.width+10;
     
     if (this.orientation === "top") {
       top = bounds.top-nativeElmBounds.height-offset[1];
@@ -74,16 +87,7 @@ export class TooltipComponent implements OnInit, AfterViewInit {
 
     this.renderer.setElementStyle(nativeElm, 'top', `${top}px`);
     this.renderer.setElementStyle(nativeElm, 'left', `${left}px`);
-  }
-
-  @HostListener("window:scroll") onWindowScroll(): void {
-    // update position based on `ref`
-    this.position();
-  }
-
-  @HostListener("window:resize") onWindowResize(): void {
-    // update position based on `ref`
-    this.position();
+    this.renderer.setElementStyle(caret, 'left', `${caretOffset}px`);
   }
 
 }

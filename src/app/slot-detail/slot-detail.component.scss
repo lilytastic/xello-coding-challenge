@@ -2,6 +2,42 @@
 
 $slot-border-radius: 5px;
 
+:host {
+    > div {
+        position: relative;
+    }
+
+    .alert-bubble {
+        position: absolute;
+        top: 7px;
+        right: 9px;
+        background-color: $red;
+        border: solid 1px $darker-red;
+        border-radius: 50%;
+        width: 17px;
+        height: 17px;
+        transition: background-color .15s ease-in-out;
+        z-index: 2;
+        cursor: pointer;
+
+        &:hover {
+            background-color: $dark-red;
+        }
+
+        &:after {
+            font-size: 11px;
+            position: absolute;
+            color: white;
+            content: "!";
+            font-weight: 400;
+            left: 50%;
+            top: 50%;
+            margin-top: -7px;
+            margin-left: -2px;
+        }
+    }
+}
+
 .slot {
     margin-bottom: 5px;
     -moz-user-select: -moz-none;
@@ -15,29 +51,6 @@ $slot-border-radius: 5px;
     display: flex;
     align-items: stretch;
     position: relative;
-
-    .alert-bubble {
-        position: absolute;
-        top: 7px;
-        right: 9px;
-        background-color: $red;
-        border: solid 1px $darker-red;
-        border-radius: 50%;
-        width: 17px;
-        height: 17px;
-
-        &:before {
-            font-size: 11px;
-            position: absolute;
-            color: white;
-            content: "!";
-            font-weight: 400;
-            left: 50%;
-            top: 50%;
-            margin-top: -7px;
-            margin-left: -2px;
-        }
-    }
     
     .margin {
         box-sizing: content-box;

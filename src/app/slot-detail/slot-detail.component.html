@@ -1,10 +1,6 @@
 <div *ngIf="slot.course">
-  <div class="slot selected" tabindex="0" 
-        xTooltip [content]="'This course requires a Pre-Requisite<br><br><a>Add one.</a>'">
-    <div *ngIf="slot.course.prerequisites" class="alert-bubble"></div>
-    <div class="margin">
-
-    </div>
+  <div class="slot selected" id="tooltip-slot" tabindex="0">
+    <div class="margin"></div>
     <div class="content">
       <div class="name">
         {{slot.course.name}}
@@ -26,13 +22,14 @@
       </div>
     </div>
   </div>
+  <div *ngIf="slot.course.prerequisites" class="alert-bubble" tabindex="0"
+    xTooltip [tooltipBind]="'#tooltip-slot'" [content]="'This course requires a Pre-Requisite<br><br><a>Add one.</a>'"></div>   
 </div>
 
-<div *ngIf="slot.recommendation">
+<div *ngIf="!slot.course && slot.recommendation">
   <div class="slot recommendation" tabindex="0">
-    <div class="margin">
-
-    </div>
+    <div class="margin"></div>
+    
     <div class="content" *ngIf="!slot.recommendation.course">
         <div class="name">
           Add {{slot.recommendation.type|capitalize}}
