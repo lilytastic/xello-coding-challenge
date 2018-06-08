@@ -19,14 +19,17 @@ export class TooltipDirective {
     
     if (this.eRef.nativeElement.contains(event.target)) {
       if (myTooltip) {
+        this.enabled = true;
         this.hide();
       }
       else {
+        this.enabled = false;
         this.display();
       }
     } 
     else if (!(myTooltip && myTooltip.eRef.nativeElement.contains(event.target))) {
       if (myTooltip) {
+        this.enabled = true;
         this.hide();
       }
     }
