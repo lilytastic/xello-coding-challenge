@@ -1,6 +1,6 @@
 @import "../../variables.scss";
 
-$fade-duration: .1s;
+$fade-duration: .15s;
 $slot-border-radius: 5px;
 
 :host {
@@ -10,6 +10,7 @@ $slot-border-radius: 5px;
     overflow: hidden;
     border: solid 1px transparent;
     transition: border-color $fade-duration ease-in-out, background-color $fade-duration ease-in-out;
+
 
     &:hover, &:focus {
         border-color: #f1f1f1;
@@ -30,6 +31,14 @@ $slot-border-radius: 5px;
             opacity: 1;
             pointer-events: all;
             background-color: $blue;
+        }
+        .if-not-selected {
+            display: none;
+        }
+    }
+    &:not(.selected) {
+        .if-selected {
+            display: none;
         }
     }
     &:hover, &:focus, &.selected {

@@ -43,8 +43,16 @@ export class TooltipDirective {
 
   @HostListener("document:keydown", ['$event']) onkeypress(event) {
     if (event.keyCode === 13 || event.keyCode === 32) {
+      if (this.focused) {
+        if (this.enabled) {
+          this.hide();
+        }
+        else {
+          this.display();
+        }
+      }
     }
-    if (event.keyCode === 27) {
+    else if (event.keyCode === 27) {
       this.hide();
     }
   }

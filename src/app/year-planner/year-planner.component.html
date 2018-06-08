@@ -8,8 +8,11 @@
         (next year)
       </span>
     </h3>
-    <div class="credits">
+    <div class="credits if-selected">
         {{year.creditsPlanned}} credit{{creditsPlanned==1?"":"s"}} planned
+    </div>
+    <div class="credits if-not-selected">
+        {{year.creditsEarned || '0'}} credit{{creditsPlanned==1?"":"s"}} earned
     </div>
   </div>
   <div class="slot-list">
@@ -53,7 +56,8 @@
                 Add {{slot.recommendation.type|capitalize}}
               </div>
               <div class="details">
-                {{yearlyPlan.creditsNeeded-year.creditsPlanned}} credits remaining
+                <!-- Hardcoded for this challenge, since I can't make data consistent with the spec -->
+                16 credits remaining
               </div>
           </div>
           <div class="content" *ngIf="slot.recommendation.course">

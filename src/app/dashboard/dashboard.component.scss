@@ -78,7 +78,7 @@
     }
 }
 
-@media (max-width: 768px)  { 
+@media (max-width: 576px)  { 
     .nav {
         margin: 20px 0;
         > .col, > .col-sm-auto {
@@ -89,6 +89,7 @@
         white-space: nowrap;
     }
 }
+
 @media (min-width: 768px) {
     .nav {
         .col {
@@ -96,7 +97,6 @@
         } 
     }
 }
-
 @media (min-width: 1360px) {
     .container {
         max-width: 1300px;    

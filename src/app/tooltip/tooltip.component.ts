@@ -34,9 +34,15 @@ export class TooltipComponent implements OnInit, AfterViewInit {
     this.orientation = this.defaultOrientation;
 
     let nativeElm = this.element.nativeElement;
-    let nativeElmBounds = nativeElm.getBoundingClientRect();
 
     let bounds = this.ref.nativeElement.getBoundingClientRect();
+    
+    // Change width first, since it might affect height...
+    if (bounds.width > 150) {
+      this.renderer.setElementStyle(nativeElm, 'width', `${bounds.width}px`);
+    }
+
+    let nativeElmBounds = nativeElm.getBoundingClientRect();
     
     let offset = [0, 6];
 
@@ -55,13 +61,10 @@ export class TooltipComponent implements OnInit, AfterViewInit {
         top = window.innerHeight-nativeElmBounds.height-offset[1];
       }
     }
-    // Do the same vice-versa
 
+    // Do the same vice-versa
     this.renderer.setElementStyle(nativeElm, 'top', `${top}px`);
     this.renderer.setElementStyle(nativeElm, 'left', `${left}px`);
-    if (bounds.width > 150) {
-      this.renderer.setElementStyle(nativeElm, 'min-width', `${bounds.width}px`);
-    }
   }
 
   @HostListener("window:scroll") onWindowScroll(): void {
