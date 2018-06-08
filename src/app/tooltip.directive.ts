@@ -63,6 +63,9 @@ export class TooltipDirective {
       if (!bindElm) {
         bindElm = this.eRef.nativeElement.parentElement.querySelector(this.tooltipBind);
       }
+      if (!bindElm) {
+        bindElm = this.eRef.nativeElement.closest(this.tooltipBind);
+      }
       console.log(bindElm);
     }
 
