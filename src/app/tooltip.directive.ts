@@ -66,7 +66,6 @@ export class TooltipDirective {
       if (!bindElm) {
         bindElm = this.eRef.nativeElement.closest(this.tooltipBind);
       }
-      console.log(bindElm);
     }
 
     let obj = {

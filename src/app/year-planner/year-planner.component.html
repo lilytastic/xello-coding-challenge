@@ -19,7 +19,7 @@
     <slot-detail [slot]="slot" *ngFor="let slot of year.slots"></slot-detail>
   </div>
   <div class="footer">
-    <button type="button">
+    <button type="button" xTooltip [content]="'Here\'s a second tooltip!'">
       Ready To Submit
     </button>
   </div>

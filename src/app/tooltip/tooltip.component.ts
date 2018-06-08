@@ -57,7 +57,7 @@ export class TooltipComponent implements OnInit, AfterViewInit {
     let nativeElmBounds = nativeElm.getBoundingClientRect();
     let top = bounds.top;
     let left = bounds.left;
-    let caretOffset = hotspotBounds.left - bounds.left;
+    let caretOffset = hotspotBounds.left === bounds.left ? nativeElmBounds.width/2-12 : (hotspotBounds.left - bounds.left);
     //let left = bounds.right-nativeElmBounds.width+10;
     
     if (this.orientation === "top") {
