@@ -1,3 +1,5 @@
-<div class="content" [innerHTML]="content"></div>
-<div class="margin"></div>
-<div class="caret" [ngClass]="orientation"></div>
+<div class="tooltip-wrapper" [@visibility]="transitionState">
+    <div class="content" [innerHTML]="content"></div>
+    <div class="margin"></div>
+    <div class="caret" [ngClass]="orientation"></div>
+</div>

@@ -34,10 +34,6 @@ h1, h2, h3 {
     src: url(./assets/fonts/Metropolis-Bold.otf);
 }
 
-.container {
-    padding-top: 35px;
-    padding-bottom: 50px;
-}
 
 select.form-control:not([size]):not([multiple]) {
     height: calc(2.2rem + 1px);
@@ -131,9 +127,15 @@ select.form-control:not([size]):not([multiple]) {
     background-color: $green;
 }
 
+.container {
+    padding-top: 35px;
+    padding-bottom: 50px;
+}
+
 @media (min-width: 1360px) {
     .container {
         max-width: 1300px;
+        padding-left: 2px;
     }
 }
 @media (min-width: 576px) {
