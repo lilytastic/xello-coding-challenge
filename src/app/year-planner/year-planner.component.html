@@ -16,7 +16,7 @@
     </div>
   </div>
   <div class="slot-list">
-    <slot-detail [slot]="slot" *ngFor="let slot of year.slots"></slot-detail>
+    <slot-detail role="button" tabindex="0" [slot]="slot" *ngFor="let slot of year.slots"></slot-detail>
   </div>
   <div class="footer">
     <button type="button" xTooltip [content]="'Here\'s a second tooltip!'">

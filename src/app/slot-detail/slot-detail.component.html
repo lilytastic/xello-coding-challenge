@@ -1,5 +1,5 @@
 <div *ngIf="slot.course">
-  <div class="slot selected" id="tooltip-slot" tabindex="0">
+  <div class="slot selected" id="tooltip-slot">
     <div class="margin"></div>
     <div class="content">
       <div class="name">
@@ -27,7 +27,7 @@
 </div>
 
 <div *ngIf="!slot.course && slot.recommendation">
-  <div class="slot recommendation" tabindex="0">
+  <div class="slot recommendation">
     <div class="margin"></div>
     
     <div class="content" *ngIf="!slot.recommendation.course">
@@ -51,7 +51,7 @@
 </div>
 
 <div *ngIf="!slot.recommendation && !slot.course">
-  <div class="slot available" tabindex="0">
+  <div class="slot available">
     <div class="margin">
 
     </div>
