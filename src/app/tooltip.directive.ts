@@ -45,7 +45,7 @@ export class TooltipDirective {
     this.focused = false;
   }
 
-  @HostListener("document:keypress", ['$event']) onkeypress(event) {
+  @HostListener("document:keydown", ['$event']) onkeydown(event) {
     let myTooltip = this.GetTooltip();
     if (event.keyCode === 13 || event.keyCode === 32) {
       if (this.focused) {
@@ -53,7 +53,7 @@ export class TooltipDirective {
       }
     }
     else if (event.keyCode === 27) {
-      this.hide();
+      this.hide(true);
     }
   }
 
