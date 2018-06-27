@@ -26,7 +26,7 @@ export class TooltipDirective {
     return myTooltip;
   }
 
-  @HostListener("document:click", ["$event"]) onclick(event) {
+  @HostListener("document:mousedown", ["$event"]) onmousedown(event) {
     let myTooltip = this.GetTooltip();
     
     if (this.eRef.nativeElement.contains(event.target)) {
@@ -36,6 +36,7 @@ export class TooltipDirective {
       myTooltip ? this.hide(true) : null;
     }
   }
+  
 
   @HostListener("focus", ['$event']) onfocus(event) {
     this.focused = true;
@@ -44,9 +45,12 @@ export class TooltipDirective {
     this.focused = false;
   }
 
-  @HostListener("document:keydown", ['$event']) onkeypress(event) {
+  @HostListener("document:keypress", ['$event']) onkeypress(event) {
+    let myTooltip = this.GetTooltip();
     if (event.keyCode === 13 || event.keyCode === 32) {
-      this.focused && this.enabled ? this.hide() : this.display();
+      if (this.focused) {
+        myTooltip ? this.hide() : this.display();
+      }
     }
     else if (event.keyCode === 27) {
       this.hide();
